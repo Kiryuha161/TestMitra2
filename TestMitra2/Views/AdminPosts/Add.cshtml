@@ -1,0 +1,42 @@
+﻿@model TestMitra2.Models.ViewModels.AddPostsRequest
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Добавить новый пост (Функция администратора)</h1>
+    </div>
+</div>
+
+<div class="container py-5">
+    <form method="post">
+        <div class="mb-3">
+            <label>Название поста</label>
+            <input type="text" class="form-control" id="heading" asp-for="Heading"/>
+        </div>
+
+         <div class="mb-3">
+            <label>Содержимое</label>
+            <textarea rows="20"class="form-control" id="content" asp-for="Content" /></textarea>
+        </div>
+       
+        <div class="mb-3">
+            <label>Короткое описание</label>
+            <input type="text" class="form-control" id="short_description" asp-for="ShortDescription" />
+        </div>
+
+        <div class="mb-3">
+            <label>Автор</label>
+            <input type="text" class="form-control" id="author" asp-for="Author"/>
+        </div>
+
+        <div class="mb-3">
+            <label>Теги</label>
+            <input type="text" class="form-control" id="Tags" asp-for="Tags" />
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn-dark">Сохранить</button>
+        </div>
+    </form>
+</div>
