@@ -9,5 +9,5 @@ namespace TestMitra2.Models.ViewModels
         public string ShortDescription { get; set; }
         public string Author { get; set; }
         public ICollection<Tag> Tags { get; set; }
-    }
+    } //Надо добавить сюда остальные элементы из BlogPost.cs
 }

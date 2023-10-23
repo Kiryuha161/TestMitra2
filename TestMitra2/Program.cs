@@ -1,5 +1,9 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TestMitra2.Data;
+using TestMitra2.Models.Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +12,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<BlogDbContext>(options 
     => options.UseSqlServer(builder.Configuration.GetConnectionString("BlogDbConnectionString")));
+builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<BlogDbContext>();
 
 var app = builder.Build();
 

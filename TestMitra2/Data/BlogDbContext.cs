@@ -11,6 +11,8 @@ namespace TestMitra2.Data
 
         public DbSet<BlogPost> BlogPosts { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<User> Users { get; set; }
+
 
     }
 }
