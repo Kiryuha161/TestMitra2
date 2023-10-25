@@ -6,3 +6,15 @@
     <h1 class="display-4">Добро пожаловать в блог</h1>
     <p>Здесь будет много интересного!</p>
 </div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>@User.Identity.Name</p>
+    
+    <div class="mb-3">
+        <form method="post" asp-controller="Account" asp-action="Logout">
+            <input type="submit" value="Выход" />
+        </form>
+    </div>
+
+}

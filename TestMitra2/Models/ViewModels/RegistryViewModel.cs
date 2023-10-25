@@ -5,15 +5,17 @@ namespace TestMitra2.Models.ViewModels
 {
     public class RegistryViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Поле Логин обязательно к заполнению")]
+       
         [Display(Name = "Логин")]
         public string Name { get; set; }
         
-        [Required]
+        [Required(ErrorMessage = "Поле Email обязательно к заполнению")]
+        [EmailAddress(ErrorMessage = "Неправильно введён Email")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Поле Пароль обязательно для заполнения")]
         [Display(Name = "Пароль")]
         [DataType(DataType.Password)]
         public string Password { get; set; }

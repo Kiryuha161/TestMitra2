@@ -22,7 +22,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
                         </li>
-                        
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Администрирование
@@ -32,14 +32,21 @@
                                 <li><a class="dropdown-item" asp-area="" asp-controller="AdminPosts" asp-action="Add">Добавить запись</a></li>
                             </ul>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Конфиденциальность</a>
                         </li>
+                    </ul>
 
+                    <ul class="navbar-nav ml-auto"
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Register">Регистрация</a>
                         </li>
+
+                         <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Login">Авторизация</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>

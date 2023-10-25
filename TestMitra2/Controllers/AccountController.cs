@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
-using System.Threading.Tasks;
-using TestMitra2.Models;
 using TestMitra2.Models.Domain;
 using TestMitra2.Models.ViewModels;
 using TestMitra2.Data;
-using Azure.Identity;
+
 
 namespace TestMitra2.Controllers
 {
@@ -29,6 +27,12 @@ namespace TestMitra2.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Login(string returnUrl = null)
+        {
+            return View(new LoginViewModel { ReturnUrl = returnUrl });
+    }
+
         [HttpPost]
         public async Task<IActionResult> Register(RegistryViewModel model)
         {
@@ -38,13 +42,9 @@ namespace TestMitra2.Controllers
                 {
                     Email = model.Email,
                     UserName = model.Name,
-                    Password = model.Password
+                    
+                    //Password = model.Password
                 };
-
-
-                //_blogDbContext.Users.Add(user);
-                //_blogDbContext.SaveChanges();
-                //await _blogDbContext.SaveChangesAsync();
 
                 var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -67,7 +67,52 @@ namespace TestMitra2.Controllers
 
             return View(model);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(model.Name, model.Password, model.RememberMe, false);
+
+                if (result.Succeeded)
+                {
+                    if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl)) {
+                        return RedirectToAction(model.ReturnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Неправильный логин и (или) пароль");
+                }
+            }
+            else
+            {
+                string messages = string.Join("; ", ModelState.Values
+                                        .SelectMany(x => x.Errors)
+                                        .Select(x => x.ErrorMessage));
+                model.ErrorMessage = messages;
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
+
+    
+    
 }
 
 
