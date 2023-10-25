@@ -6,7 +6,21 @@
 </div>
 
 <div class="container py-5">
+
+    @if (ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-success">
+            @ViewBag.SuccessMessage
+        </div>
+    }
+
     <form method="post">
+        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input class="form-control" id="name" asp-for="Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        
         <div class="mb-3">
             <label asp-for="Email"></label>
             <input class="form-control" id="email" asp-for="Email" />
@@ -19,7 +33,7 @@
             <span asp-validation-for="Password"></span>
         </div>
 
-         <div class="mb-3">
+        <div class="mb-3">
             <label asp-for="ConfirmPassword" class="form-label"></label>
             <input class="form-control" id="confirm_password" asp-for="ConfirmPassword" />
             <span asp-validation-for="ConfirmPassword"></span>
@@ -30,3 +44,5 @@
         </div>
     </form>
 </div>
+
+

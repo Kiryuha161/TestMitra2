@@ -5,14 +5,11 @@ namespace TestMitra2.Data
 {
     public class BlogDbContext : DbContext
     {
-        public BlogDbContext(DbContextOptions options) : base(options)
+        public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options)
         {
         }
 
         public DbSet<BlogPost> BlogPosts { get; set; }
         public DbSet<Tag> Tags { get; set; }
-        public DbSet<User> Users { get; set; }
-
-
     }
 }

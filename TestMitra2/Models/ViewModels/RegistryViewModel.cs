@@ -1,9 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TestMitra2.Models.ViewModels
 {
     public class RegistryViewModel
     {
+        [Required]
+        [Display(Name = "Логин")]
+        public string Name { get; set; }
+        
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }

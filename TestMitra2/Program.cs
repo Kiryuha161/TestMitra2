@@ -12,7 +12,12 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<BlogDbContext>(options 
     => options.UseSqlServer(builder.Configuration.GetConnectionString("BlogDbConnectionString")));
-builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<BlogDbContext>();
+
+builder.Services.AddDbContext<UserDbContext>(options
+    => options.UseSqlServer(builder.Configuration.GetConnectionString("UserDbConnectionString")));
+builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<UserDbContext>();
+
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
@@ -29,6 +34,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -5,6 +5,7 @@ using TestMitra2.Models;
 using TestMitra2.Models.Domain;
 using TestMitra2.Models.ViewModels;
 using TestMitra2.Data;
+using Azure.Identity;
 
 namespace TestMitra2.Controllers
 {
@@ -36,19 +37,22 @@ namespace TestMitra2.Controllers
                 User user = new User
                 {
                     Email = model.Email,
-                    Name = model.Email,
+                    UserName = model.Name,
                     Password = model.Password
                 };
-      
 
-                _blogDbContext.Users.Add(user);
-                _blogDbContext.SaveChanges();
+
+                //_blogDbContext.Users.Add(user);
+                //_blogDbContext.SaveChanges();
+                //await _blogDbContext.SaveChangesAsync();
 
                 var result = await _userManager.CreateAsync(user, model.Password);
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
+                    ViewBag.SuccessMessage = "Регистрация прошла успешно!";
                     await _signInManager.SignInAsync(user, false);
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -60,12 +64,12 @@ namespace TestMitra2.Controllers
                 }
 
             }
-                
+
             return View(model);
         }
     }
 }
-            
 
-        
-            
+
+
+
