@@ -5,11 +5,6 @@ namespace TestMitra2.Models.ViewModels
 {
     public class LoginViewModel
     {
-        /*[Required(ErrorMessage = "Поле Email обязательно к заполнению")]
-        [EmailAddress(ErrorMessage = "Неправильно введён Email")]
-        [Display(Name = "Email")]
-        public string Email { get; set; }*/
-
         [Required(ErrorMessage = "Поле Логин обязательно к заполнению")]
         [Display(Name = "Логин")]
         public string Name { get; set; }
@@ -28,3 +23,4 @@ namespace TestMitra2.Models.ViewModels
 
     }
 }
+

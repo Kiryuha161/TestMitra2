@@ -1,0 +1,14 @@
+﻿@using TestMitra2.Models.ViewModels
+
+@model List<BlogPostViewModel>
+
+@foreach (var post in Model)
+{
+        <div class="container py-2 bg-secondary bg-opacity-10">
+            <h2><a href="#">@post.Heading</a></h2>
+            <img class="featured-image-blog" src="@post.FeaturedImageUrl">
+            <p>@post.Content</p>
+            <p>Author: @post.Author</p>
+            <hr>
+        </div>
+}

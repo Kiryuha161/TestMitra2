@@ -1,8 +1,6 @@
-﻿using TestMitra2.Models.Domain;
-
-namespace TestMitra2.Models.ViewModels
+﻿namespace TestMitra2.Models.ViewModels
 {
-    public class AddPostsRequest
+    public class BlogPostViewModel
     {
         public Guid Id { get; set; }
         public string Heading { get; set; }
@@ -13,5 +11,5 @@ namespace TestMitra2.Models.ViewModels
         public string UrlHandle { get; set; }
         public DateTime PublishDate { get; set; }
         public string Author { get; set; }
-    } 
+    }
 }

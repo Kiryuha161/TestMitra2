@@ -42,8 +42,6 @@ namespace TestMitra2.Controllers
                 {
                     Email = model.Email,
                     UserName = model.Name,
-                    
-                    //Password = model.Password
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
@@ -112,7 +110,7 @@ namespace TestMitra2.Controllers
     }
 
     
-    
+    //Не всё успел, что хотел
 }
 
 
